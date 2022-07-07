@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Controller\" />
+    <None Remove="Views\" />
+    <None Remove="Views\Home\" />
+    <None Remove="Microsoft.AspNetCore.Razor.Runtime" />
+    <None Remove="AuthorizationRequirements\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="AuthorizationRequirements\" />
+  </ItemGroup>
+</Project>
