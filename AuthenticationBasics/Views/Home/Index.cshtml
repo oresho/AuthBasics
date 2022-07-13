@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿ <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,6 +6,23 @@
 </head>
 <body>
     <h1>Home Page</h1>
+
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h3>User is authenticated</h3>
+    }
+    else { 
+        <h3>User is NOT authenticated</h3>
+    }
+
+    @using Microsoft.AspNetCore.Authorization
+    @inject IAuthorizationService authorizationService
+
+    @if ((await authorizationService.AuthorizeAsync(User, "Claims.DoB")).Succeeded)
+    {
+        <h1>User has dob claim</h1>
+    }
 
 </body>
 </html>

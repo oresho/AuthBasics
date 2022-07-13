@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AuthenticationBasics.CustomPolicyProvider;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,12 @@ namespace AuthenticationBasics.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IAuthorizationService _authorizationService;
+
+        public HomeController(IAuthorizationService authorizationService)
+        {
+            _authorizationService = authorizationService;
+        }
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -30,8 +37,21 @@ namespace AuthenticationBasics.Controllers
         {
             return RedirectToAction("Secret");
         }
+
         [Authorize(Roles = "Admin")]
         public IActionResult SecretRole()
+        {
+            return RedirectToAction("Secret");
+        }
+
+        [SecurityLevel(5)]
+        public IActionResult SecretLevel()
+        {
+            return RedirectToAction("Secret");
+        }
+
+        [SecurityLevel(10)]
+        public IActionResult SecretHigherLevel()
         {
             return RedirectToAction("Secret");
         }
@@ -44,6 +64,7 @@ namespace AuthenticationBasics.Controllers
                 new Claim(ClaimTypes.Email, "Ore@gmail.com"),
                 new Claim(ClaimTypes.DateOfBirth, "11/11/2011"),
                 new Claim(ClaimTypes.Role, "Admin"),
+                new Claim(DynamicPolicies.SecurityLevel, "7"),
                 new Claim("Ore says", "Ore"),
             };
             var licenseClaims = new List<Claim>()
@@ -60,6 +81,22 @@ namespace AuthenticationBasics.Controllers
             HttpContext.SignInAsync(userPrincipal);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> DOstuff([FromServices] IAuthorizationService authorizationService)
+        {
+            var builder = new AuthorizationPolicyBuilder("Schema");
+            var customPolicy = builder.RequireClaim("Hello").Build();
+
+            //var auth = await _authorizationService.AuthorizeAsync(User, customPolicy); You can do it like this using DI globally
+            var auth = await authorizationService.AuthorizeAsync(User, customPolicy);//or like this using DI in this method alone
+
+            if (auth.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -10,11 +10,19 @@
     <None Remove="Views\Home\" />
     <None Remove="Microsoft.AspNetCore.Razor.Runtime" />
     <None Remove="AuthorizationRequirements\" />
+    <None Remove="Transformer\" />
+    <None Remove="CustomPolicyProvider\" />
+    <None Remove="Pages\" />
+    <None Remove="Pages\Razor\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Home\" />
     <Folder Include="AuthorizationRequirements\" />
+    <Folder Include="Transformer\" />
+    <Folder Include="CustomPolicyProvider\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Pages\Razor\" />
   </ItemGroup>
 </Project>

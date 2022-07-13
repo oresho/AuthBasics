@@ -4,10 +4,15 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AuthenticationBasics.AuthorizationRequirements;
+using AuthenticationBasics.Controllers;
+using AuthenticationBasics.CustomPolicyProvider;
+using AuthenticationBasics.Transformer;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -51,8 +56,26 @@ namespace AuthenticationBasics
                     policyBuilder.RequireCustomClaim(ClaimTypes.DateOfBirth);
                 });
             });
+            services.AddSingleton<IAuthorizationPolicyProvider, CustomAuthorizationPolicyProvider>();
+            services.AddScoped<IAuthorizationHandler, SecurityLevelHandler>();
             services.AddScoped<IAuthorizationHandler, CustomRequireClaimHandler>();
-            services.AddControllersWithViews();
+            services.AddScoped<IAuthorizationHandler, CookieJarAuthorizationHandler>();
+            services.AddScoped<IClaimsTransformation, ClaimsTransformation>();            
+
+            services.AddControllersWithViews(optopns => {
+                var defaultAuthBuilder = new AuthorizationPolicyBuilder();
+                var defaultAuthPolicy = defaultAuthBuilder
+                .RequireAuthenticatedUser()
+                .Build();
+                //global Authorization filter
+                optopns.Filters.Add(new AuthorizeFilter(defaultAuthPolicy));
+            });
+
+            services.AddRazorPages()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizePage("/Razor/Secured"); 
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,6 +103,7 @@ namespace AuthenticationBasics
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
         }
     }
