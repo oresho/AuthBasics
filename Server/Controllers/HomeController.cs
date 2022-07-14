@@ -55,6 +55,12 @@ namespace Server.Controllers
             return Ok(new { access_token = JsonToken });
         }
 
+        public IActionResult Decode(string part)
+        {
+            var bytes = Convert.FromBase64String(part);
+            return Ok(Encoding.UTF8.GetString(bytes));
+        }
+
        
     }
 }

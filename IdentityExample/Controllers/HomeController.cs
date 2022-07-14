@@ -14,6 +14,7 @@ using System.Security.Policy;
 using System.Text.Encodings.Web;
 using System.Web;
 using System.Linq;
+using Microsoft.AspNetCore.Http.Extensions;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -65,10 +66,14 @@ namespace IdentityExample.Controllers
             return View();
         }
 
-        //public IActionResult ResetPassword()
-        //{
-        //    return View();
-        //}
+        public IActionResult ResetPassword(string userId, string code)
+        {
+            //?a=foo&b=bar
+            var query = new QueryBuilder();
+            query.Add("userId", userId);
+            query.Add("code", code);
+            return View(model: query.ToString());
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
@@ -180,9 +185,9 @@ namespace IdentityExample.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> ResetPassword(string Id, string code, string newPassword)
+        public async Task<IActionResult> ResetPassword(string userId, string code, string newPassword)
         {
-            var user = await _userManager.FindByIdAsync(Id);
+            var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return BadRequest("No user with this email exists");

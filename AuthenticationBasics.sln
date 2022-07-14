@@ -9,9 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityExample", "Identity
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "basics", "basics", "{EFB393A2-D33C-48B9-87C0-E14E3C239474}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oauth", "oauth", "{D333ED72-83E9-411A-9D78-76B4F04BC7DB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{9813C282-2AA0-4022-9344-A1127FF54DA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oauth", "oauth", "{0808F567-0745-435B-815A-172E5CFC7000}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "..\..\Desktop\Client\Client.csproj", "{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{9813C282-2AA0-4022-9344-A1127FF54DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9813C282-2AA0-4022-9344-A1127FF54DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9813C282-2AA0-4022-9344-A1127FF54DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,13 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EB540C74-73E0-4201-BBD9-F58E4DA30904} = {EFB393A2-D33C-48B9-87C0-E14E3C239474}
 		{8A0EA709-CD0C-4E65-B6CB-F4389FDBCBAE} = {EFB393A2-D33C-48B9-87C0-E14E3C239474}
-		{9813C282-2AA0-4022-9344-A1127FF54DA0} = {D333ED72-83E9-411A-9D78-76B4F04BC7DB}
+		{9813C282-2AA0-4022-9344-A1127FF54DA0} = {0808F567-0745-435B-815A-172E5CFC7000}
+		{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6} = {0808F567-0745-435B-815A-172E5CFC7000}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.StandardHeader = $2
 	EndGlobalSection
 EndGlobal
