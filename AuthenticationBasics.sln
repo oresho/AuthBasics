@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oauth", "oauth", "{0808F567
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "..\..\Desktop\Client\Client.csproj", "{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "..\..\Api\Api.csproj", "{4938AF8F-ECC6-4271-BB3A-55C62C7305EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4938AF8F-ECC6-4271-BB3A-55C62C7305EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4938AF8F-ECC6-4271-BB3A-55C62C7305EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4938AF8F-ECC6-4271-BB3A-55C62C7305EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4938AF8F-ECC6-4271-BB3A-55C62C7305EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +55,7 @@ Global
 		{8A0EA709-CD0C-4E65-B6CB-F4389FDBCBAE} = {EFB393A2-D33C-48B9-87C0-E14E3C239474}
 		{9813C282-2AA0-4022-9344-A1127FF54DA0} = {0808F567-0745-435B-815A-172E5CFC7000}
 		{DA7ECD04-0C71-4E9F-B45B-FB315EC34CD6} = {0808F567-0745-435B-815A-172E5CFC7000}
+		{4938AF8F-ECC6-4271-BB3A-55C62C7305EC} = {0808F567-0745-435B-815A-172E5CFC7000}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

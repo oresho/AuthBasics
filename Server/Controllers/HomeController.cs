@@ -10,6 +10,9 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 
 namespace Server.Controllers
 {
+    /// <summary>
+    /// this controller was just for learning how to use jwt
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly IAuthorizationService _authorizationService;

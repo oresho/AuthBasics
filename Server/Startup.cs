@@ -48,6 +48,7 @@ namespace Server
                     //Jwtauth when its passed through the header
                     config.TokenValidationParameters = new TokenValidationParameters()
                     {
+                        ClockSkew = TimeSpan.Zero,
                         ValidIssuer = Constants.Issuer,
                         ValidAudience = Constants.Audience,
                         IssuerSigningKey = key
